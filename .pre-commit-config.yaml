@@ -1,0 +1,23 @@
+# Local hooks only: nothing is downloaded. Activate once per clone with `pre-commit install`.
+repos:
+  - repo: local
+    hooks:
+      - id: whitespace
+        name: whitespace and conflict markers
+        entry: git diff --cached --check
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: ruby-syntax
+        name: formula syntax (system ruby -c)
+        # ruby -c checks only its first file argument, so loop over all of them.
+        entry: sh -c 'for f in "$@"; do /usr/bin/ruby -c "$f" >/dev/null || exit 1; done' --
+        language: system
+        files: ^Formula/.*\.rb$
+      - id: noreply-email
+        name: author email is a GitHub noreply address
+        # The tap is public: commits must not carry private email addresses.
+        entry: sh -c 'git var GIT_AUTHOR_IDENT | grep -q "@users.noreply.github.com>" || { echo "Set your GitHub noreply address in this clone - git config user.email <id>+<login>@users.noreply.github.com"; exit 1; }'
+        language: system
+        pass_filenames: false
+        always_run: true
