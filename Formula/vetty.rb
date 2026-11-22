@@ -12,13 +12,6 @@ class Vetty < Formula
     system "go", "build", *std_go_args
   end
 
-  def caveats
-    <<~EOS
-      vetty needs Docker Desktop. Build the lab images once, and again after every upgrade:
-        vetty lab build
-    EOS
-  end
-
   test do
     assert_equal version.to_s, shell_output("#{bin}/vetty version").strip
   end
