@@ -7,7 +7,7 @@ Homebrew tap of the Vibing Munchies org. Formulae build from private repositorie
 ```sh
 brew tap vibing-munchies/tap git@github.com:Vibing-Munchies/homebrew-tap.git
 brew trust --tap vibing-munchies/tap
-brew install kehrwoche mydealz           # or just one of them
+brew install kehrwoche mydealz vetty     # or just some of them
 ```
 
 Update with `brew update && brew upgrade`.
