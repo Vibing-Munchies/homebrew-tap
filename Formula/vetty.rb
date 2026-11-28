@@ -2,8 +2,8 @@ class Vetty < Formula
   # Fetched with git over SSH: the repository is private, a tarball URL would need a token.
   url "ssh://git@github.com/Vibing-Munchies/vetty.git",
       using:    :git,
-      tag:      "v0.1.0",
-      revision: "75148d1f7c1a4f6dcdb785805f31bf4e1679f2fd"
+      tag:      "v0.2.0",
+      revision: "ab61da9f50c7e6d51d87677901afdb8130ea7146"
 
   depends_on "go" => :build
 
